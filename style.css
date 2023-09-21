@@ -1,0 +1,131 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&family=Roboto+Mono&display=swap');
+
+body {
+    background-color: #716f8a;
+		display: flex;
+		flex-direction: column;
+		margin: 0;
+}
+
+nav {
+	font-family: 'Roboto', sans-serif;
+	margin: 0;
+	width: 100%;
+	height: fit-content;
+	background-color:#3f3e54;
+	color: white;
+	border-bottom: 3px solid #ccc;
+}
+
+nav ul {
+	display: flex;
+	list-style-type: none;
+	margin: 20px;
+	padding: 0;
+}
+
+li {
+	margin: 0 10px;
+	text-align: center;
+	font-size: 24px;
+}
+
+nav a {
+	color: white;
+	text-decoration: none;
+}
+
+nav a:hover {
+	color: #ccc;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  padding: 30px;
+	margin: 30px;
+	min-width: 300px;
+  max-width: 800px;
+  border: 3px solid #ccc;
+  background-color: #3f3e54;
+  color:white;
+  font-size: larger;
+  font-family: 'Roboto', sans-serif;
+}
+
+form h2 {
+	text-align: center;
+	margin: 0;
+	margin-bottom: 12px;
+	border-bottom: 1px solid white;
+}
+
+.form-container {
+	margin: 30px auto;
+	padding-bottom: 15px;
+	display: flex;
+	border-bottom: 3px solid #ccc;
+}
+
+form#new-variable-form {
+	max-height: fit-content;
+}
+
+.input-container {
+	display: flex;
+	flex-direction: column;
+	margin-bottom: 10px;
+}
+
+form input, form select {
+	font-family: 'Roboto', sans-serif;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  font-size: larger;
+}
+
+button {
+	font-size: larger;
+	margin: 6px;
+	padding: 10px;
+	border: 1px solid #ccc;
+	background-color: #716f8a;
+	color: white;
+	font-family: 'Roboto', sans-serif;
+}
+
+button:hover {
+	background-color: #656480;
+}
+
+button:active {
+	background-color: #3f3e54;
+}
+
+#download-btn {
+	margin: 20px auto;
+	background-color: #3f3e54;
+}
+
+#download-btn:hover {
+	background-color: #656480;
+}
+
+#download-btn:active {
+	background-color: #716f8a;
+}
+
+form .error {
+	color: red;
+	font-size: smaller;
+}
+
+.preview {
+	max-height: 800px;
+  border: 3px solid #ccc;
+  background-color: #3f3e54;
+  color: rgb(226, 241, 255);
+  padding: 10px;
+	margin: 10px 30px;
+  font-family: 'Roboto Mono', monospace;
+}

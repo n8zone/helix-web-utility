@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Helix Item Generator</title>
+  </head>
+  <body>
+    <nav id="nav-bar"></nav>
+    <div class="form-container">
+      <form id="form">
+        <h2>Item</h2>
+        <div class="input-container" id="input-container">
+          <label for="item-name">Item Name</label>
+          <input type="text" name="name" id="item-name" />
+          <label for="item-description">Item Description</label>
+          <input type="text" name="description" id="item-description" />
+          <label for="item-model">Item Model </label>
+          <input type="text" name="model" id="item-model" />
+          <label for="item-category">Item Category</label>
+          <input type="text" name="category" id="item-category" />
+          <label for="item-health">Item Health</label>
+          <input type="number" name="health" id="item-health" />
+        </div>
+        
+        <button type="submit" id="submit-btn">Generate</button>
+      </form>
+      <form id="new-variable-form">
+        <h2>New Item Variable</h2>
+        <label for="new-variable-name">Variable Name</label>
+        <input type="text" name="varName" id="new-variable-name">
+        <label for="var-type">Variable Type</label>
+        <select name="varType" id="var-type">
+          <option value="number">Number</option>
+          <option value="string">String</option>
+          <option value="bool">Boolean (true/false)</option>
+        </select>
+        <button id="new-variable-btn">Add Variable</button>
+      </form>
+    </div>
+    <div class="preview" id="debug-preview">lorem</div>
+    <button id="download-btn">Download</button>
+    <script src="js/nav.js"></script>
+    <script src="js/item-generation.js"></script>
+  </body>
+</html>
