@@ -17,6 +17,7 @@ const debugPreview = document.getElementById('debug-preview');
 
 let customVariables = [];
 
+
 function addCustomVariables() {
 	variableNames = customVariables.map((variable) => {
 		let varType = variable.type;
@@ -34,16 +35,15 @@ function addCustomVariables() {
 }
 
 
-function generateLua(itemName, itemDesc, itemModel, itemCategory, itemHealth, itemID) {
-  let lua = `ITEM.name = ${itemName}
-  ITEM.model = ${itemModel}
-  ITEM.description = ${itemDesc}
-	ITEM.category = ${itemCategory}
-	ITEM.health = ${itemHealth}
+function generateLua(itemName, itemDesc, itemModel, itemCategory, itemID) {
+  let lua = `ITEM.name = "${itemName}"
+  ITEM.model = "${itemModel}"
+  ITEM.description = "${itemDesc}"
+	ITEM.category = "${itemCategory}"
 	${addCustomVariables().map((variable) => {
 		console.log(variable);
 		return variable;
-	}).join('\n')};
+	}).join('\n')}
 
 	function ITEM:GetDescription()
 	<lua_tab>return self.description
@@ -83,10 +83,10 @@ function generateFile(itemID, data) {
   URL.revokeObjectURL(url);
 }
 
-function createItemVariable(varName) {
+function createItemVariable(varName, varType) {
 	const newVariable = {
 		name: varName,
-		type: newVariableTypeField.value,
+		type: varType,
 	};
 	return newVariable;
 }
@@ -114,7 +114,8 @@ form.addEventListener('submit', (e) => {
 newVariableForm.addEventListener('submit', (e) => {
 	e.preventDefault();
 	const newVariable = createItemVariable(newVariableNameField.value);
-	customVariables.push(newVariable);
+	const newVariableType = newVariableTypeField.value;
+	customVariables.push(newVariable, newVariableType);
 	displayItemVariable(newVariable);
 })
 
@@ -123,7 +124,6 @@ submitBtn.addEventListener('click', (e) => {
   const name = nameField.value;
   const desc = descriptionField.value;
   const model = modelField.value;
-	const category = categoryField.value;
-	const health = healthField.value;
-  generateLua(name, desc, model, category, health, 'test_item');
+  const category = categoryField.value;
+  generateLua(name, desc, model, category, 'test_item');
 });

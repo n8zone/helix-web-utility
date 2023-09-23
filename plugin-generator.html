@@ -8,8 +8,50 @@
 </head>
 <body>
     <nav id="nav-bar"></nav>
-    <button id="test">Test</button>
-    <script src="nav.js"></script>
+    <div class="form-container" id="plugin-form">
+        <form id="plugin-basic-info">
+          <h2>Plugin Basics</h2>
+          <div class="input-container" id="input-container">
+            <label for="plugin-name">Plugin Name</label>
+            <input type="text" name="name" id="plugin-name" />
+            <label for="plugin-desc">Plugin Description</label>
+            <input type="text" name="description" id="plugin-desc" />
+            <label for="plugin-author">Plugin Author</label>
+            <input type="text" name="author" id="plugin-author" />
+          </div>
+        </form>
+        <form id="plugin-info-form">
+            <h2>Plugin Structure</h2>
+            <div class="plugin-checkboxes">
+                <section id="plugin-folders-section" class="plugin-section">
+                    <h3>Folders</h3>
+                    <label><input type="checkbox" name="folders" value="attributes"> /attributes/</label><br>
+                    <label><input type="checkbox" name="folders" value="classes"> /classes/</label><br>
+                    <label><input type="checkbox" name="folders" value="blueprints"> /blueprints/</label><br>
+                    <label><input type="checkbox" name="folders" value="commands"> /commands/</label><br>
+                    <label><input type="checkbox" name="folders" value="derma"> /derma/</label><br>
+                    <label><input type="checkbox" name="folders" value="entities"> /entities/</label><br>
+                    <label><input type="checkbox" name="folders" value="factions"> /factions/</label><br>
+                    <label><input type="checkbox" name="folders" value="items"> /items/</label><br>
+                    <label><input type="checkbox" name="folders" value="libraries"> /libraries/</label><br>
+                </section>
+
+                <section id="plugin-files-section" class="plugin-section">
+                    <h3>Files</h3>
+                    <label><input type="checkbox" name="files" value="cl_hooks.lua"> cl_hooks.lua</label><br>
+                    <label><input type="checkbox" name="files" value="cl_plugin.lua"> cl_plugin.lua</label><br>
+                    <label><input type="checkbox" name="files" value="sh_hooks.lua"> sh_hooks.lua</label><br>
+                    <label><input type="checkbox" name="files" value="sh_plugin.lua" checked disabled> sh_plugin.lua</label><br>
+                    <label><input type="checkbox" name="files" value="sv_hooks.lua"> sv_hooks.lua</label><br>
+                    <label><input type="checkbox" name="files" value="sv_plugin.lua"> sv_plugin.lua</label><br>
+                </section>
+            </div>
+        </form>
+        <button id="plugin-download">Download</button>
+    </div>
+
+    <script src="js/nav.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
     <script src="js/plugin-generation.js"></script>
 </body>

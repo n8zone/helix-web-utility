@@ -1,0 +1,16 @@
+/attributes/
+/classes/
+/blueprints/
+/commands/
+/derma/
+/entities/
+/factions/
+/items/
+/libraries/
+
+/cl_hooks.lua
+/cl_plugin.lua
+/sh_hooks.lua
+/sh_plugin.lua 
+/sv_hooks.lua
+/sv_plugin.lua

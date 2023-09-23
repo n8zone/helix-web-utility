@@ -1,28 +1,51 @@
-// Create a new instance of JSZip
-const zip = new JSZip();
+function getPluginInfo() {
+    return {
+        name: document.getElementById("plugin-name").value,
+        desc: document.getElementById("plugin-desc").value,
+        author: document.getElementById("plugin-author").value,
+    }
+}
 
-
-zip.file("sh_plugin.lua", "-- Your sh_plugin.lua content here");
-zip.file("sv_plugin.lua", "-- Your sv_plugin.lua content here");
-
-
-const items = zip.folder("items");
-items.file("sh_item.lua", "-- Your sh_item.lua content here");
-
-
-
-document.getElementById('test').addEventListener('click', () => {
-    zip.generateAsync({type:"blob"})
-    .then(function(blob) {
-    const link = document.createElement("a");
-
-    link.href = URL.createObjectURL(blob);
-    link.download = "test-plugin.zip";
-
-
-    document.body.appendChild(link);
-    link.click();
-
-    document.body.removeChild(link);
+function generateZip() {
+    const plugin = new JSZip();
+    const pluginFolder = plugin.folder("plugin-name");
+    const folderSection = document.getElementById("plugin-folders-section");
+    const fileSection = document.getElementById("plugin-files-section");
+    const folders = folderSection.querySelectorAll("input[type=checkbox]");
+    const files = fileSection.querySelectorAll("input[type=checkbox]");
+    let checkedFolders = [...folders].filter((checkbox) => {
+        return checkbox.checked;
     });
-});
+
+    let checkedFiles = [...files].filter((checkbox) => {
+        return checkbox.checked;
+    });
+
+    checkedFolders.forEach((c) => {
+        console.log(c.value);
+        pluginFolder.folder(c.value);
+    });
+
+    checkedFiles.forEach((c) => {
+        console.log(c.value);
+        if (c.value === "sh_plugin.lua") {
+            let pluginInfo = getPluginInfo();
+            let content = `local PLUGIN = PLUGIN\nPLUGIN.Name = "${pluginInfo.name}"\nPLUGIN.Author = "${pluginInfo.author}"\nPLUGIN.desc = "${pluginInfo.desc}"`;
+            checkedFiles.forEach((c2) => {
+                if (c2.value !== "sh_plugin.lua") {
+                    content += `\nix.util.Include("${c2.value}")`;
+                }
+            });
+            pluginFolder.file(c.value, content);
+        } else {
+            pluginFolder.file(c.value, "-- Your content here");
+        }
+    });
+
+    // download the zip
+    plugin.generateAsync({ type: "blob" }).then(function (content) {
+        saveAs(content, "plugin.zip");
+    });
+}
+
+document.getElementById('plugin-download').addEventListener('click', generateZip);
